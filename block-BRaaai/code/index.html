@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/51a7cc97b5.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container" id="root"></div>
+    <script type="text/babel">
+      let cardInfo = {
+        title: 'City Lights in New York',
+        date: new Date('2017-01-26'),
+        comments: 67,
+        subTitle: 'The city that never sleeps.',
+        description:
+          'New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.',
+        category: 'photos',
+        imageURL:
+          'https://images.unsplash.com/photo-1610874933184-7728fd666162?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+      };
+      let card = (
+        <>
+          <div className="card">
+            <img
+              src={cardInfo.imageURL}
+              className="img-container"
+              alt="image"
+            />
+            <p className="text-image">Photos</p>
+            <p className="text-on-image">
+              {cardInfo.date.toLocaleDateString('default', {
+                day: 'numeric',
+                month: 'short',
+              })}
+            </p>
+            <h1>{cardInfo.title}</h1>
+            <h5>{cardInfo.subTitle}</h5>
+            <p className="description">{cardInfo.description}</p>
+          <p className="comments">
+            <i className="fa-solid fa-comments"></i> {cardInfo.comments}{' '}
+            comments
+          </p>
+        </div>
+        </>
+      );
+
+      ReactDOM.render(card, document.getElementById('root'));
+    </script>
+  </body>
+</html>

@@ -70,3 +70,6 @@ function createUI() {
   });
   ReactDOM.render(ui, rootelm);
 }
+
+
+createUI();

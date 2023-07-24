@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container margin-top text-center">
+      <h1>My Movie Watch list</h1>
+      <div class="box">
+        <input type="text" placeholder="Enter movie name to add to list" />
+        <ul class="movie-list"></ul>
+      </div>
+    </section>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      let input = document.querySelector(`input[type="text"]`);
+      let rootelm = document.querySelector('.movie-list');
+      let listofMovies = localStorage.getItem('listofMovies')
+        ? JSON.parse(localStorage.getItem('listofMovies'))
+        : [];
+
+      input.addEventListener('keyup', (event) => {
+        if (event.keyCode === 13) {
+          listofMovies.push({
+            name: event.target.value,
+            status: false,
+          });
+          event.target.value = '';
+          updateLocalStorage();
+          createUI();
+        }
+      });
+
+      function getMovieStatus(movie) {
+        return movie.status ? 'Watched' : 'To Watch';
+      }
+
+      function handleStatus(movie) {
+        movie.status = !movie.status;
+        updateLocalStorage();
+        createUI();
+      }
+
+      function updateLocalStorage() {
+        localStorage.setItem('listofMovies', JSON.stringify(listofMovies));
+      }
+
+      function createUI() {
+        //   rootelm.innerHTML = '';
+
+        let ui = listofMovies.map((movie, index) => {
+          // let li = React.createElement(
+          //   'li',
+          //   { className: 'flex list padding-50' },
+          //   React.createElement('span', {}, movie.name),
+          //   React.createElement(
+          //     'p',
+          //     {
+          //       onClick: () => handleStatus(movie),
+          //     },
+          //    getMovieStaus(movie)
+          //   )
+          // );
+          return (
+            <li className="flex list padding-50" key={index}>
+              <span>{movie.name}</span>
+              <p onClick={() => handleStatus(movie)}>{getMovieStatus(movie)}</p>
+            </li>
+          );
+        });
+        ReactDOM.render(ui, rootelm);
+      }
+
+      createUI();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+button {
+  display: block;
+  /* background-color: lightblue; */
+  /* padding: 10px; */
+}
+
+
+.center{
+    margin:18px auto;
+}

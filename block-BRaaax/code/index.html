@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      let btn = (
+        <>
+          <div>
+            <button class="center" size="small" label="Button" type="secondary">
+              Button
+            </button>
+            <button class="center" size="small" label="Button" type="primary">
+              Button
+            </button>
+            <button class="center" size="small" label="Button" type="tertiary">
+              Button
+            </button>
+            <button class="center" size="medium" label="Button" type="primary">
+              Button
+            </button>
+            <button
+              class="center"
+              size="medium"
+              label="Button"
+              type="secondary"
+            >
+              Button
+            </button>
+            <button
+              class="center"
+              size="medium"
+              label="Button"
+              type="tertiary"
+              disabled
+            >
+              Button
+            </button>
+            <button class="center" size="large" label="Button" type="primary">
+              Button
+            </button>
+            <button class="center" size="large" label="Button" type="secondary">
+              Button
+            </button>
+            <button class="center" size="large" label="Button" type="tertiary">
+              Button
+            </button>
+            <button
+              class="center"
+              size="large"
+              label="Button"
+              type="tertiary"
+              onClick={() => alert('You Clicked Me!')}
+            >
+              Button
+            </button>
+          </div>
+        </>
+      );
+      ReactDOM.render(btn, document.getElementById('root'));
+    </script>
+  </body>
+</html>
